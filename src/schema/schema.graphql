@@ -1,0 +1,34 @@
+scalar Upload
+
+input userInput {
+  first_name: String!,
+  last_name: String!,
+  gender: String!,
+  email: String!,
+  password: String!
+}
+
+input loginInput {
+  email: String!,
+  password: String!
+}
+
+type User {
+  id: ID,
+  first_name: String,
+  last_name: String,
+  gender: String,
+  email: String,
+  register: Int,
+  photo: String
+}
+
+type Mutation {
+  createUser(data: userInput!): Boolean
+  login(data: loginInput!): String,
+  uploadSingleFile(file: Upload!): String
+}
+
+type Query {
+  me: User
+}
