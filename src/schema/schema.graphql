@@ -13,6 +13,12 @@ input loginInput {
   password: String!
 }
 
+input postInput {
+  title: String,
+  posts: [String],
+  type: Int,
+}
+
 type User {
   id: ID,
   first_name: String,
@@ -23,12 +29,26 @@ type User {
   photo: String
 }
 
+type Post {
+  id: ID,
+  title: String,
+  posts: [String],
+  created: String,
+  updated: String,
+  posted: Int,
+  type: Int,
+  love: Int,
+  comment: Int
+}
+
 type Mutation {
   createUser(data: userInput!): Boolean
   login(data: loginInput!): String,
+  createPost(data: postInput!): Boolean,
   uploadSingleFile(file: Upload!): String
 }
 
 type Query {
-  me: User
+  me: User,
+  postList: [Post]
 }

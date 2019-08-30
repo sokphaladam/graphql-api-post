@@ -1,13 +1,16 @@
-import { createUser, login, me } from './query/UserQuery';
+import { createUser, login, me } from './controller/UserQuery';
 import { GraphQLUpload, UploadOptions } from 'graphql-upload';
 import { generate } from './config/generate';
 import { createWriteStream } from 'fs';
+import { createPost, listPost } from './controller/PostQuery';
 
 const resolverMap = {
     Upload: GraphQLUpload,
     me: me,
     createUser: createUser,
     login: login,
+    createPost: createPost,
+    postList: listPost,
     uploadSingleFile: async (root: any) => {
         const { filename, createReadStream } = await root.file;
 
